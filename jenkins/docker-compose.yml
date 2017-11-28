@@ -6,7 +6,7 @@ services:
       - "8080:8080"
       - "50000:50000"
     volumes:
-      - "/Users/anderson/homeoffice/projects/personal/jenkins/jenkins_home:/var/jenkins_home"
+      - "/Users/anderson/homeoffice/projects/personal/docker/jenkins/jenkins_home:/var/jenkins_home"
     deploy:
       restart_policy:
         condition: on-failure
