@@ -1,0 +1,14 @@
+version: "3"
+services:
+  sonarqube:
+    image: sonarqube
+    command: -Dsonar.ce.javaOpts=-Xmx2048m -Dsonar.web.javaOpts=-Xmx2048m
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+      restart_policy:
+        condition: on-failure
