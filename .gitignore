@@ -42,3 +42,6 @@ target/
 
 # Jenkins
 jenkins_home/
+
+# Nexus OSS
+sonatype-work/
