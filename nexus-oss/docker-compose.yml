@@ -6,6 +6,6 @@ services:
       - "8081:8081"
     volumes:
       - "/Users/anderson/homeoffice/projects/personal/docker/nexus-oss/sonatype-work:/sonatype-work:Z"
-    #deploy:
-      #restart_policy:
-        #condition: on-failure
+    deploy:
+      restart_policy:
+        condition: on-failure

@@ -1,0 +1,43 @@
+version: "3"
+services:
+
+  nexus:
+    image: 192.168.99.100/sonatype/nexus:oss
+    ports:
+      - "8081:8081"
+    volumes:
+      - "/Users/anderson/homeoffice/projects/personal/docker/nexus-oss/sonatype-work:/sonatype-work:Z"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - ic
+
+  sonarqube:
+    image: sonarqube
+    command: -Dsonar.ce.javaOpts=-Xmx2048m -Dsonar.web.javaOpts=-Xmx2048m
+    ports:
+      - "9000:9000"
+      - "9092:9092"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - ic
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "/Users/anderson/homeoffice/projects/personal/docker/jenkins/jenkins_home:/var/jenkins_home"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - ic
+
+networks:
+  ic:
+
